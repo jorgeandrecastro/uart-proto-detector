@@ -9,10 +9,10 @@
 ## Fonctionnalités
 
 - **`no_std`** — compatible avec tous les environnements bare-metal (ARM Cortex-M, RISC-V, Xtensa…)
-- **Zéro dépendance externe** — aucun HAL imposé, aucun allocateur requis
-- **Deux stratégies de longueur** — taille fixe ou octet de longueur dynamique
+- **Zéro dépendance externe** : aucun HAL imposé, aucun allocateur requis
+- **Deux stratégies de longueur** : taille fixe ou octet de longueur dynamique
 - **Gestion d'erreurs typée** via `ParserError` (pas de panic en production)
-- **CRC volontairement exclu** — chaque protocole définit son propre algorithme ; la validation se fait dans le code appelant
+- **CRC volontairement exclu** : chaque protocole définit son propre algorithme ; la validation se fait dans le code appelant
 
 ## Installation
 
