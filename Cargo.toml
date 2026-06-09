@@ -1,0 +1,39 @@
+# Copyright (C) 2026 Jorge Andre Castro <georgeandrec@gmail.com>
+# SPDX-License-Identifier: GPL-2.0-or-later
+
+[package]
+name = "uart-proto-detector"
+version = "0.1.0"
+edition = "2024"
+authors = ["Jorge Andre Castro <georgeandrec@gmail.com>"]
+description = "Bibliothèque universelle no_std pour la détection et le découpage de trames UART sur systèmes embarqués."
+readme = "README.md"
+license = "GPL-2.0-or-later"
+repository = "https://github.com/jorgeandrecastro/uart-proto-detector"
+documentation = "https://docs.rs/uart-proto-detector"
+keywords = ["uart", "embedded", "protocol", "parser", "no-std"]
+categories = ["embedded", "no-std", "parser-implementations"]
+
+[lib]
+name = "uart_proto_detector"
+path = "src/lib.rs"
+
+# Aucune dépendance externe : la bibliothèque est intentionnellement pure Rust
+# afin de maximiser la portabilité entre architectures (ARM Cortex-M, RISC-V,
+# Xtensa, AVR, etc.) sans imposer de HAL particulier.
+[dependencies]
+
+[dev-dependencies]
+# Uniquement pour les tests unitaires sur la machine hôte
+# (les tests s'exécutent en environnement std)
+
+[profile.release]
+opt-level = "z"       # Optimisation taille stricte pour minimiser l'empreinte Flash
+lto = true            # Link-Time Optimization : élimine le code mort entre les crates
+codegen-units = 1     # Unité unique pour maximiser l'efficacité du LTO
+panic = "abort"       # Interdit le déroulement de pile (obligatoire en bare-metal)
+strip = true          # Supprime les symboles de debug en production
+
+[profile.test]
+opt-level = 0
+debug = true
